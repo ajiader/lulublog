@@ -4,15 +4,15 @@ namespace app\controllers;
 
 use app\core\front\BaseFrontController;
 use Yii;
-use app\models\User;
-use app\models\search\UserSearch;
+use app\models\Content;
+use app\models\search\ContentSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * ContentController implements the CRUD actions for Content model.
  */
-class UserController extends BaseFrontController
+class ContentController extends BaseFrontController
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Lists all User models.
+     * Lists all Content models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
+        $searchModel = new ContentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Displays a single User model.
+     * Displays a single Content model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Creates a new User model.
+     * Creates a new Content model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new Content();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Updates an existing User model.
+     * Updates an existing Content model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Deletes an existing User model.
+     * Deletes an existing Content model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the Content model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return User the loaded model
+     * @return Content the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = Content::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

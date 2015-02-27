@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\admin\controllers;
 
-use app\core\front\BaseFrontController;
 use Yii;
-use app\models\User;
-use app\models\search\UserSearch;
+use app\models\Comment;
+use app\models\search\CommentSearch;
+use app\core\back\BaseBackController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * CommentController implements the CRUD actions for Comment model.
  */
-class UserController extends BaseFrontController
+class CommentController extends BaseBackController
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Lists all User models.
+     * Lists all Comment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
+        $searchModel = new CommentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Displays a single User model.
+     * Displays a single Comment model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Creates a new User model.
+     * Creates a new Comment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new Comment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Updates an existing User model.
+     * Updates an existing Comment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Deletes an existing User model.
+     * Deletes an existing Comment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class UserController extends BaseFrontController
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the Comment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return User the loaded model
+     * @return Comment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = Comment::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

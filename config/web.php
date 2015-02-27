@@ -54,7 +54,11 @@ $config = [
     ],
     'defaultRoute' => 'country',
     'params' => $params,
-
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\AdminModule',
+        ],
+    ],
 
 ];
 

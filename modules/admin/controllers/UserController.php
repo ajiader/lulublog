@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\admin\controllers;
 
-use app\core\front\BaseFrontController;
 use Yii;
 use app\models\User;
 use app\models\search\UserSearch;
+use app\core\back\BaseBackController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends BaseFrontController
+class UserController extends BaseBackController
 {
     public function behaviors()
     {
