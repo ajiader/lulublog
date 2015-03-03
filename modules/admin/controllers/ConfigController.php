@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\config\BasicConfig;
 use Yii;
 use app\models\Config;
 use app\models\search\ConfigSearch;
@@ -117,5 +118,19 @@ class ConfigController extends BaseBackController
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionBasic()
+    {
+        $model = new BasicConfig();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        return $this->render('basic', [
+            'model' => $model,
+        ]);
     }
 }

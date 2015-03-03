@@ -12,6 +12,7 @@ class AdminModule extends BaseModule
     {
         parent::init();
 
+        $this->layout = 'main'; //false 不使用布局文件  null 使用父类布局 filename使用当前Model的布局文化节
         // custom initialization code goes here
     }
 }

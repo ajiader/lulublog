@@ -52,7 +52,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
-    'defaultRoute' => 'country',
+//    'defaultRoute' => 'country',
     'params' => $params,
     'modules' => [
         'admin' => [

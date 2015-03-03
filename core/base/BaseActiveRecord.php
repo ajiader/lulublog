@@ -12,5 +12,12 @@ use yii\db\ActiveRecord;
  */
 class BaseActiveRecord extends ActiveRecord
 {
-
+    public function afterValidate()
+    {
+        parent::afterValidate();
+        if($this->hasErrors())
+        {
+            var_dump($this->errors);
+        }
+    }
 }

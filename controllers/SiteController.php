@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\front\BaseFrontController;
 use app\models\EntryForm;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -59,7 +60,8 @@ class SiteController extends BaseFrontController
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new User();
+        $model->scenario = 'login';
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
