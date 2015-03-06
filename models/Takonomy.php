@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "{{%takonomy}}".
  *
  * @property integer $id
- * @property integer $type_id
+ * @property integer $type
  * @property integer $parent_id
  * @property string $name
  * @property string $alias
@@ -18,6 +18,9 @@ use Yii;
  */
 class Takonomy extends \app\core\base\BaseActiveRecord
 {
+    const TYPE_POST = 1;
+    const TYPE_PAGE = 2;
+    const TYPE_TAG = 3;
     /**
      * @inheritdoc
      */
@@ -32,8 +35,8 @@ class Takonomy extends \app\core\base\BaseActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'parent_id', 'name', 'sort_num'], 'required'],
-            [['type_id', 'parent_id', 'contents', 'sort_num'], 'integer'],
+            [['type', 'parent_id', 'name', 'sort_num'], 'required'],
+            [['type', 'parent_id', 'contents', 'sort_num'], 'integer'],
             [['name', 'alias'], 'string', 'max' => 64],
             [['description'], 'string', 'max' => 256]
         ];
@@ -46,7 +49,7 @@ class Takonomy extends \app\core\base\BaseActiveRecord
     {
         return [
             'id' => 'ID',
-            'type_id' => 'Type ID',
+            'type' => 'Type',
             'parent_id' => 'Parent ID',
             'name' => 'Name',
             'alias' => 'Alias',

@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\models\config\BasicConfig;
+use app\models\config\ThemeConfig;
 use Yii;
 use app\models\Config;
 use app\models\search\ConfigSearch;
@@ -123,14 +124,22 @@ class ConfigController extends BaseBackController
     public function actionBasic()
     {
         $model = new BasicConfig();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->saveAll()) {
+           return $this->redirect(['view', 'id'=> $model->id]);
+        }else{
+            $model->initAll();
+            return $this->render('basic', ['model' => $model]);
         }
-        return $this->render('basic', [
-            'model' => $model,
-        ]);
+    }
+
+    public function actionTheme()
+    {
+        $model = new ThemeConfig();
+        if ($model->load(Yii::$app->request->post()) && $model->saveAll()) {
+            return $this->redirect(['view', 'id'=> $model->id]);
+        }else{
+            $model->initAll();
+            return $this->render('theme', ['model' => $model]);
+        }
     }
 }
