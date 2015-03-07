@@ -30,6 +30,36 @@ use Yii;
  */
 class Content extends \app\core\base\BaseActiveRecord
 {
+    const TYPE_POST = 'post';
+    const TYPE_PAGE = 'page';
+
+    const VISIBILITY_PUBLIC = '1';
+    const VISIBILITY_HIDDEN = '2';
+    CONST VISIBILITY_PASSWORD = '3';
+    const VISIBILITY_PRIVATE = '4';
+
+    const STATUS_PUBLIC = '1';
+    const STATUS_DRAFT = '2';
+    const STATUS_PENDING = '3';
+
+    public static  function getVisibilities()
+    {
+        return [
+            self::VISIBILITY_PUBLIC => '公开',
+            self::VISIBILITY_HIDDEN => '回复可见',
+            self::VISIBILITY_PASSWORD => '密码保护',
+            self::VISIBILITY_PRIVATE => '私有'
+        ];
+    }
+
+    public static  function getStatuses()
+    {
+        return [
+            self::STATUS_PUBLIC => '发布',
+            self::STATUS_DRAFT => '草稿',
+            self::STATUS_PENDING => '等待审核'
+        ];
+    }
     /**
      * @inheritdoc
      */
