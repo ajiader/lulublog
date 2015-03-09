@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Content;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Content */
@@ -15,18 +16,18 @@ use yii\widgets\ActiveForm;
     <div class="col-md-9">
         <?= $form->field($model, 'title')->textInput(['maxlength' => 256, 'placeholder' => '请输入标题'])->label(false) ?>
 
-        <?= $form->field($model, 'alias')->textInput(['maxlength' => 128]) ?>
+        <?= $form->field($model, 'alias')->textInput(['maxlength' => 128, 'placeholder' => 'Url地址']) ?>
 
-        <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'content')->textarea(['rows' => 12]) ?>
 
-        <?= $form->field($model, 'excerpt')->textInput(['maxlength' => 512]) ?>
+        <?= $form->field($model, 'excerpt')->textarea(['row' => 6]) ?>
     </div>
     <div class="col-md-3">
-        <?= $form->field($model, 'visibility')->textInput() ?>
+        <?= $form->field($model, 'visibility')->dropDownList(Content::getVisibilities()) ?>
         <?= $form->field($model, 'password')->passwordInput(['maxlength' => 64]) ?>
-        <?= $form->field($model, 'status')->textInput() ?>
-        <?= $form->field($model, 'allow_comment')->textInput() ?>
-        <?= $form->field($model, 'sticky')->textInput() ?>
+        <?= $form->field($model, 'status')->dropDownList(Content::getStatuses()) ?>
+        <?= $form->field($model, 'allow_comment')->checkbox() ?>
+        <?= $form->field($model, 'sticky')->checkbox() ?>
         <?= $form->field($model, 'thumb')->textInput(['maxlength' => 256]) ?>
         <?= $form->field($model, 'template')->textInput(['maxlength' => 64]) ?>
         <?= $form->field($model, 'comments')->textInput() ?>
@@ -36,7 +37,7 @@ use yii\widgets\ActiveForm;
 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
     </div>
 </div>

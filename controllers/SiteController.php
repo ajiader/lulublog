@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\front\BaseFrontController;
+use app\models\Content;
 use app\models\EntryForm;
 use app\models\User;
 use Yii;
@@ -51,6 +52,7 @@ class SiteController extends BaseFrontController
 
     public function actionIndex()
     {
+
         return $this->render('index');
     }
 
