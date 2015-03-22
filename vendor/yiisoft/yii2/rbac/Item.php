@@ -7,6 +7,7 @@
 
 namespace yii\rbac;
 
+use yii\base\Model;
 use yii\base\Object;
 
 /**

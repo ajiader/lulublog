@@ -96,7 +96,10 @@ class SiteController extends BaseFrontController
 
     public function actionAbout()
     {
-        return $this->render('about');
+        /*$this->render('about', ['test' => '5']);
+        $this->renderFile('full file name', ['test'=>5]);*/
+        return $this->render('about', ['test' => 'test']);//把变量传到布局文件中
+
     }
 
     public function actionSay($message = 'Hello')

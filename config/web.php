@@ -51,12 +51,20 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'authManager' => [
+            'class' => 'yii\rbac\Dbmanager',
+        ]
     ],
 //    'defaultRoute' => 'country',
     'params' => $params,
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
+            'modules' => [
+                'rbac' => [
+                    'class' => 'app\modules\admin\modules\rbac\RbacModule',
+                ],
+            ],
         ],
     ],
 
